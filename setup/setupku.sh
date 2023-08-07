@@ -78,7 +78,7 @@ fi
 ttet=`uname -r`
 ReqPKG="linux-headers-$ttet"
 if ! dpkg -s $ReqPKG  >/dev/null 2>&1; then
-rm /root/setup.sh >/dev/null 2>&1
+rm /root/setupku.sh >/dev/null 2>&1
 exit
 else
 clear
@@ -104,6 +104,8 @@ chmod 644 /root/.profile
 echo -e "[ ${green}INFO${NC} ] Preparing the install file"
 apt install git curl -y >/dev/null 2>&1
 apt install python -y >/dev/null 2>&1
+apt install bash -y
+clear
 clear
 echo -e "[ ${green}INFO${NC} ] Aight good ... installation file is ready"
 echo -e "$green                                                                                         $NC"
@@ -128,10 +130,14 @@ echo "IP=" >> /var/lib/SIJA/ipvps.conf
 echo -e "${green}┌──────────────────────────────────────────┐${NC}"
 echo -e "                  ${YELLOW}INSTALL TOOLS${NC}"
 echo -e "${green}└──────────────────────────────────────────┘${NC}"
-wget -q https://raw.githubusercontent.com/Bringas-tunnel/v6/main/system/kontol.sh;chmod +x kontol.sh;./Kontol.sh
-rm Kontol.sh
+sleep 3
+#wget -q https://raw.githubusercontent.com/Bringas-tunnel/v6/main/system/kontol.sh;chmod +x kontol.sh;./Kontol.sh
+#rm Kontol.sh
+wget https://raw.githubusercontent.com/Bringas-tunnel/v6/main/system/kontol.sh && chmod +x kontol.sh && ./kontol.sh
 clear
 echo " "
+echo "${green}Anda akan di arahkan ke domain dalam 3 detik${NC}"
+sleep 3
 clear
 echo -e "$green━━━━━━━━━━┏┓━━━━━━━━━━━━━━━━━━━━━━━━┏┓━━━━━━━━━━━$NC"
 echo -e "$green━━━━━━━━━┏┛┗┓━━━━━━━━━━━━━━━━━━━━━━┏┛┗┓━━━━━━━━━━$NC"
@@ -142,8 +148,8 @@ echo -e "$green┗━━━┛┗━━┛━┗━┛┗━━┛━━━━�
 echo -e "$green━━━━━━━━━━━━━━━━━━━━━┃┃━━━━━━━━━━━━━━━━━━━━━━┏━┛┃$NC"
 echo -e "$green━━━━━━━━━━━━━━━━━━━━━┗┛━━━━━━━━━━━━━━━━━━━━━━┗━━┛$NC"
 echo -e "${green}┌─────────────────────────────────────────┐${NC}"
-echo -e "                 ${YELLOW} 1. DOMAIN RANDOM${NC}"
-echo -e "                 ${YELLOW} 2. DOMAIN SENDIRI${NC}"
+echo -e "               ${YELLOW} 1. DOMAIN RANDOM${NC}"
+echo -e "               ${YELLOW} 2. DOMAIN SENDIRI${NC}"
 echo -e "${green}└─────────────────────────────────────────┘${NC}"
     read -rp " select [ 1 or 2 ] --- >>>     " dns
 	if test $dns -eq 1; then
@@ -193,6 +199,8 @@ TEXT="Installasi script V5 By bringas
 ============================
 "
 curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+echo -e "        ${green}menuju install paket${NC}"
+sleep 3
 clear
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green      Install SSH / WS               $NC"
@@ -319,4 +327,5 @@ rm -rf insshws.sh
 rm -rf installed.sh
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 echo -e ""
+read -p "[ENTER] To menu"
 menu
