@@ -316,6 +316,7 @@ rm -rf slow.sh
 rm -rf setupku .sh
 rm -rf domain
 rm -rf insshws.sh
+rm -rf installed.sh
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 echo -e "
 "
