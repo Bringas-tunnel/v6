@@ -106,23 +106,22 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
 
 clear
-echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "       ${BIWhite}${UWhite}VMESS ${NC}"
+echo -e "${BICyan} ┌─────────────────────────────────────────────────┐${NC}"
+echo -e "       ${BIWhite}${UWhite}THEME ${NC}"
 echo -e ""
-echo -e "     ${BICyan}[${BIWhite}01${BICyan}] Create Vmess" "${BICyan}[${BIWhite}04${BICyan}] Delete Vmess"
-echo -e "     ${BICyan}[${BIWhite}02${BICyan}] Trial Vmess" "${BICyan}[${BIWhite}05${BICyan}] Check Login Vmess"
-echo -e "     ${BICyan}[${BIWhite}03${BICyan}] Extend Vmess" "${BICyan}[${BIWhite}•0${BICyan}] Back To Menu"
-echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
+echo -e "     ${BICyan}[${BIWhite}01${BICyan}] MENU 1"
+echo -e "     ${BICyan}[${BIWhite}02${BICyan}] MENU 2"
+echo -e "     ${BICyan}[${BIWhite}03${BICyan}] MENU 3"
+echo -e "     ${BICyan}[${BIWhite}04${BICyan}] Back to menu"
+echo -e "${BICyan} └─────────────────────────────────────────────────┘${NC}"
 echo ""
 read -p " Select menu :  "  opt
 echo -e ""
 case $opt in
-1) clear ; add-ws ; exit ;;
-2) clear ; trialvmess ; exit ;;
-3) clear ; renew-ws ; exit ;;
-4) clear ; del-ws ; exit ;;
-5) clear ; cek-ws ; exit ;;
-0) clear ; menu ; exit ;;
+1) clear ; menu1 ; exit ;;
+2) clear ; menu2 ; exit ;;
+3) clear ; menu3 ; exit ;;
+4) clear ; menu ; exit ;;
 x) exit ;;
-*) echo "Anda salah tekan " ; sleep 1 ; menu-vmess ;;
+*) echo "Anda salah tekan " ; sleep 1 ; menu-theme ;;
 esac
