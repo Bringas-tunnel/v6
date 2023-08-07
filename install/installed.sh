@@ -333,14 +333,14 @@ wget -O jam "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/system/jam
 wget -O add-host "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/system/add-host.sh"
 wget -O status "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/system/status.sh"
 wget -O slow "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/system/slow.sh"
-wget -q -O /usr/bin/update "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/system/update.sh"
+wget -O update "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/system/update.sh"
 # backup
 wget -O sshws "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/ssh/sshws.sh"
 wget -O menu-backup "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/menu/menu-backup.sh"
 wget -O backup "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/backup/backup.sh"
 wget -O restore "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/backup/restore.sh"
 # xolpanel
-wget -q -O /usr/bin/xolpanel "https://raw.githubusercontent.com/Bringas-tunnel/xolpanel/main/xolpanel.sh"
+wget -O xolpanel "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/xolpanel/xolpanel.sh"
 # chmod menu
 chmod +x /usr/bin/menu
 chmod +x /usr/bin/menu-ssh
@@ -624,7 +624,7 @@ cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 # konfigurasi stunnel
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
-
+/etc/init.d/nginx restart >/dev/null 2>&1 ############
 
 # install fail2ban
 apt -y install fail2ban
@@ -862,25 +862,25 @@ chown -R www-data:www-data /home/vps/public_html
 sleep 1
 echo -e "$yell[SERVICE]$NC Restart All service SSH & OVPN"
 /etc/init.d/nginx restart >/dev/null 2>&1
-sleep 1
+sleep 2
 echo -e "[ ${green}ok${NC} ] Restarting nginx"
 /etc/init.d/openvpn restart >/dev/null 2>&1
-sleep 1
+sleep 2
 echo -e "[ ${green}ok${NC} ] Restarting cron "
 /etc/init.d/ssh restart >/dev/null 2>&1
-sleep 1
+sleep 2
 echo -e "[ ${green}ok${NC} ] Restarting ssh "
 /etc/init.d/dropbear restart >/dev/null 2>&1
-sleep 1
+sleep 2
 echo -e "[ ${green}ok${NC} ] Restarting dropbear "
 /etc/init.d/fail2ban restart >/dev/null 2>&1
-sleep 1
+sleep 2
 echo -e "[ ${green}ok${NC} ] Restarting fail2ban "
 /etc/init.d/stunnel4 restart >/dev/null 2>&1
-sleep 1
+sleep 2
 echo -e "[ ${green}ok${NC} ] Restarting stunnel4 "
 /etc/init.d/vnstat restart >/dev/null 2>&1
-sleep 1
+sleep 2
 echo -e "[ ${green}ok${NC} ] Restarting vnstat "
 /etc/init.d/squid restart >/dev/null 2>&1
 
@@ -938,21 +938,35 @@ apt autoremove -y >/dev/null 2>&1
 cd
 chown -R www-data:www-data /home/vps/public_html
 sleep 1
-echo -e "$yell[SERVICE]$NC Restart All service SSH & OVPN"
+echo -e "$yell[SERVICE]$NC Restart nginx"
 /etc/init.d/nginx restart >/dev/null 2>&1
-sleep 1
-echo -e "[ ${green}ok${NC} ] Restarting nginx"
+#
+service nginx restart >/dev/null 2>&1
+sleep 2
+echo -e "[ ${green}ok${NC} ] Restart openvpn"
 /etc/init.d/openvpn restart >/dev/null 2>&1
-sleep 1
-echo -e "[ ${green}ok${NC} ] Restarting cron "
+#
+service openvpn restart >/dev/null 2>&1
+sleep 2
+echo -e "[ ${green}ok${NC} ] Restart ssh "
 /etc/init.d/ssh restart >/dev/null 2>&1
-sleep 1
-echo -e "[ ${green}ok${NC} ] Restarting ssh "
+#
+service ssh restart >/dev/null 2>&1
+sleep 2
+echo -e "[ ${green}ok${NC} ] Restart dropbear"
 /etc/init.d/dropbear restart >/dev/null 2>&1
-sleep 1
-echo -e "[ ${green}ok${NC} ] Restarting dropbear "
+#
+service dropbear restart >/dev/null 2>&1
+sleep 2
+echo -e "[ ${green}ok${NC} ] Restart fail2ban"
 /etc/init.d/fail2ban restart >/dev/null 2>&1
-sleep 1
-echo -e "[ ${green}ok${NC} ] Restarting fail2ban "
+#
+service fail2ban restart >/dev/null 2>&1
+sleep 2
+echo -e "[ ${green}ok${NC} ] Restart stunnel4"
 /etc/init.d/stunnel4 restart >/dev/null 2>&1
-sleep 1
+#
+service stunnel4 restart >/dev/null 2>&1
+
+
+sleep 4
