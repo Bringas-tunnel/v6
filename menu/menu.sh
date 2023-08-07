@@ -40,7 +40,9 @@ PERMISSION () {
     if [ "$MYIP" = "$IZIN" ]; then
     Bloman
     else
-    res="Permission Denied!"
+    res="Permission denied"
+    echo -e "${green}Hubungi pembuat config${NC}"
+    echo -e "${green}whatsap : 085955333616${NC}"
     fi
     BURIQ
 }
@@ -68,7 +70,7 @@ trx=$(grep -c -E "^#! " "/etc/xray/config.json")
 let tra=$trx/2
 ssx=$(grep -c -E "^## " "/etc/xray/config.json")
 let ssa=$ssx/2
-
+# DOWNLOAD UDP
 UDPX="https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2"
 # // Exporting Language to UTF-8
 BIBlack='\033[1;90m'      # Black
@@ -250,7 +252,7 @@ read -n 1 -s -r -p "Press any key to back on menu"
 menu
 }
 export sem=$( curl -s https://raw.githubusercontent.com/Bringas-tunnel/v5/main/versions)
-export pak=$( cat /home/.ver)
+#export pak=$( cat /home/.ver)
 IPVPS=$(curl -s ipinfo.io/ip )
 clear
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
@@ -299,15 +301,14 @@ else
     datediff "$Exp" "$DATE"
 fi;
 echo -e "        ${BICyan}└─────────────────────────────────────┘${NC}"
-echo
+echo 
 read -p " Select menu : " opt
-echo -e ""
 case $opt in
 1) clear ; menu-ssh ;;
 2) clear ; menu-vmess ;;
 3) clear ; menu-vless ;;
 4) clear ; menu-trojan ;;
-5) clear ; menu-manager ;;
+5) clear ; bash menu-manager.sh ;;
 6) clear ; menu-trial ;;
 7) clear ; menu-backup ;;
 8) clear ; add-host ;;
