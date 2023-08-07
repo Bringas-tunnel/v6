@@ -287,6 +287,10 @@ wget -O menu-manager "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/m
 wget -O menu-set "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/menu/menu-set.sh"
 wget -O menu-domain "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/menu/menu-domain.sh"
 wget -O menu-webmin "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/menu/menu-webmin.sh"
+# theme
+wget -O menu1 "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/theme/menu1.sh"
+wget -O menu2 "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/theme/menu2.sh"
+wget -O menu3 "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/theme/menu3.sh"
 # menu ssh ovpn
 wget -O usernew "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/ssh/usernew.sh"
 wget -O trial "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/ssh/trial.sh"
@@ -350,6 +354,10 @@ chmod +x /usr/bin/menu-backup
 chmod +x /usr/bin/menu-set
 chmod +x /usr/bin/menu-domain
 chmod +x /usr/bin/menu-sodosok
+#theme
+chmod +x /usr/bin/menu1
+chmod +x /usr/bin/menu2
+chmod +x /usr/bin/menu3
 # chmod sodosok
 chmod +x /usr/bin/addss
 chmod +x /usr/bin/cekss
