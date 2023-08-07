@@ -58,7 +58,7 @@ sleep 1
 echo -e "[ ${tyblue}NOTES${NC} ] If error you need.. to do this"
 sleep 1
 echo ""
-sleep 1
+clear
 echo -e "${YELLOW}┌────────────────────────────┐${NC}"
 echo -e "[ ${tyblue}NOTES${NC} ] 1. apt update -y"
 echo -e "[ ${tyblue}NOTES${NC} ] 2. apt upgrade -y"
@@ -128,8 +128,8 @@ echo "IP=" >> /var/lib/SIJA/ipvps.conf
 echo -e "${green}┌──────────────────────────────────────────┐${NC}"
 echo -e "                  ${YELLOW}INSTALL TOOLS${NC}"
 echo -e "${green}└──────────────────────────────────────────┘${NC}"
-wget -q https://raw.githubusercontent.com/Bringas-tunnel/v6/main/system/tools.sh;chmod +x tools.sh;./tools.sh
-rm tools.sh
+wget -q https://raw.githubusercontent.com/Bringas-tunnel/v6/main/system/kontol.sh;chmod +x kontol.sh;./Kontol.sh
+rm Kontol.sh
 clear
 echo " "
 clear
