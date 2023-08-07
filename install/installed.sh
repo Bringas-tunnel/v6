@@ -130,6 +130,7 @@ rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 # nginx.conf
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/plugin/nginx.conf"
+wget -O nginx.conf "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/plugin/nginx.conf"
 mkdir -p /home/vps/public_html
 /etc/init.d/nginx restart
 
@@ -303,8 +304,8 @@ wget -O autokill "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/ssh/a
 wget -O ceklim "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/ssh/ceklim.sh"
 wget -O tendang "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/ssh/tendang.sh"
 wget -O xp "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/ssh/xp.sh"
-wget -q -O /usr/bin/lock "https://raw.githubusercontent.com/Bringas-tunnel/v6/ssh/user-lock.sh"
-wget -q -O /usr/bin/unlock "https://raw.githubusercontent.com/Bringas-tunnel/v6/ssh/user-unlock.sh"
+wget -O lock "https://raw.githubusercontent.com/Bringas-tunnel/v6/ssh/user-lock.sh"
+wget -O unlock "https://raw.githubusercontent.com/Bringas-tunnel/v6/ssh/user-unlock.sh"
 # sodosok
 wget -O adds "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/sodosok/adds.sh"
 wget -O cekss "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/sodosok/cekss.sh"
@@ -586,7 +587,8 @@ echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 /etc/init.d/ssh restart
 /etc/init.d/dropbear restart
-
+/etc/init.d/nginx restart
+/etc/init.d/ssh restart
 cd
 # install stunnel
 apt install stunnel4 -y
@@ -754,7 +756,7 @@ wget -O menu-backup "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/me
 wget -O backup "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/backup/backup.sh"
 wget -O restore "https://raw.githubusercontent.com/Bringas-tunnel/v6/main/backup/restore.sh"
 # xolpanel
-wget -q -O /usr/bin/xolpanel "https://raw.githubusercontent.com/Bringas-tunnel/xolpanel/main/xolpanel.sh"
+wget -O xolpanel "https://raw.githubusercontent.com/Bringas-tunnel/main/xolpanel/xolpanel.sh"
 # chmod menu
 chmod +x /usr/bin/menu
 chmod +x /usr/bin/menu-ssh
@@ -941,32 +943,24 @@ sleep 1
 echo -e "$yell[SERVICE]$NC Restart nginx"
 /etc/init.d/nginx restart >/dev/null 2>&1
 #
-service nginx restart >/dev/null 2>&1
 sleep 2
 echo -e "[ ${green}ok${NC} ] Restart openvpn"
 /etc/init.d/openvpn restart >/dev/null 2>&1
 #
-service openvpn restart >/dev/null 2>&1
 sleep 2
 echo -e "[ ${green}ok${NC} ] Restart ssh "
 /etc/init.d/ssh restart >/dev/null 2>&1
 #
-service ssh restart >/dev/null 2>&1
 sleep 2
 echo -e "[ ${green}ok${NC} ] Restart dropbear"
 /etc/init.d/dropbear restart >/dev/null 2>&1
 #
-service dropbear restart >/dev/null 2>&1
 sleep 2
 echo -e "[ ${green}ok${NC} ] Restart fail2ban"
 /etc/init.d/fail2ban restart >/dev/null 2>&1
 #
-service fail2ban restart >/dev/null 2>&1
 sleep 2
 echo -e "[ ${green}ok${NC} ] Restart stunnel4"
 /etc/init.d/stunnel4 restart >/dev/null 2>&1
 #
-service stunnel4 restart >/dev/null 2>&1
-
-
 sleep 4
